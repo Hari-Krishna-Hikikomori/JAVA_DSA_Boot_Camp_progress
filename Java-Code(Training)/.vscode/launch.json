@@ -1,0 +1,126 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Selection",
+            "request": "launch",
+            "mainClass": "Selection",
+            "projectName": "Java_118cf1fe"
+        },
+        {
+            "type": "java",
+            "name": "leet_test",
+            "request": "launch",
+            "mainClass": "leet_test",
+            "projectName": "Java_118cf1fe"
+        },
+        {
+            "type": "java",
+            "name": "TDbinarysearch",
+            "request": "launch",
+            "mainClass": "TDbinarysearch",
+            "projectName": "Java_118cf1fe"
+        },
+        {
+            "type": "java",
+            "name": "BubbleSort",
+            "request": "launch",
+            "mainClass": "BubbleSort",
+            "projectName": "Java_118cf1fe"
+        },
+        {
+            "type": "java",
+            "name": "ScannerMyWriter",
+            "request": "launch",
+            "mainClass": "ScannerMyWriter",
+            "projectName": "Java_118cf1fe"
+        },
+        {
+            "type": "java",
+            "name": "BinarySearchTwoD",
+            "request": "launch",
+            "mainClass": "BinarySearchTwoD",
+            "projectName": "Java_118cf1fe"
+        },
+        {
+            "type": "java",
+            "name": "BinarySearch",
+            "request": "launch",
+            "mainClass": "BinarySearch",
+            "projectName": "Java_118cf1fe"
+        },
+        {
+            "type": "java",
+            "name": "Linearsearch_first",
+            "request": "launch",
+            "mainClass": "Linearsearch_first",
+            "projectName": "Java_118cf1fe"
+        },
+        {
+            "type": "java",
+            "name": "FindEvenNumberLeetCode",
+            "request": "launch",
+            "mainClass": "FindEvenNumberLeetCode",
+            "projectName": "Java_118cf1fe"
+        },
+        {
+            "type": "java",
+            "name": "Arraylist",
+            "request": "launch",
+            "mainClass": "Arraylist",
+            "projectName": "Java_118cf1fe"
+        },
+        {
+            "type": "java",
+            "name": "TwoDArrayWthScanner",
+            "request": "launch",
+            "mainClass": "TwoDArrayWthScanner",
+            "projectName": "Java_118cf1fe"
+        },
+        {
+            "type": "java",
+            "name": "Math",
+            "request": "launch",
+            "mainClass": "Math",
+            "projectName": "Java_118cf1fe"
+        },
+        {
+            "type": "java",
+            "name": "calculaterwithwhile",
+            "request": "launch",
+            "mainClass": "calculaterwithwhile",
+            "projectName": "Java_118cf1fe"
+        },
+        {
+            "type": "java",
+            "name": "CaseCheck",
+            "request": "launch",
+            "mainClass": "CaseCheck",
+            "projectName": "Java_118cf1fe"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "Java_118cf1fe"
+        },
+        {
+            "type": "java",
+            "name": "Test",
+            "request": "launch",
+            "mainClass": "Test",
+            "projectName": "Java_118cf1fe"
+        }
+    ]
+}
