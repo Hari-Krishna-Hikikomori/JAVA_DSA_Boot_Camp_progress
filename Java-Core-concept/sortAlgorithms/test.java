@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Main {
+public class test {
     public static void main(String[] args) {
         int[] arr = {8,7,6,5,4,3,2,1};
         int[] arr1 = {99,23,34,567,0,-1};
