@@ -73,35 +73,54 @@ public class AVL
 
     private node isBalce(node Node)
     {
-        if(Node.r == null || Node.l == null)
-        {
-            return Node;
-        }
+        int r = Node.r == null ? 0 : Node.r.height;
+        int l = Node.l == null ? 0 : Node.l.height;
 
-
-        if(Math.abs(Node.l.height - Node.r.height) > 1)
+        if(Math.abs(r - l) > 1)
         {
-            if(rotateChcek(Node))
+
+            if(rotateChcek(Node))  // left height is long
             {
-                if(rotateChcek(Node.l)) {
-                    Node = rightRotate(Node);
+                if(Node.l != null) {
+                    if (rotateChcek(Node.l))               // left side height long rotate Right
+                    {
+                        Node = rightRotate(Node);
+
+                    } else {                                      // Right side height long rotate left
+                        Node.l = leftRotate(Node.l);
+                        if (rotateChcek(Node)) {
+                            Node = rightRotate(Node);
+                        }
+                    }
                 }else
                 {
-                    Node.l = leftRotate(Node.l);
+                    Node = rightRotate(Node);
                 }
             }
-            else
+            else            // right side height is long
             {
-                if(rotateChcek(Node.r)) {
-                    Node = rightRotate(Node);
+                if(Node.r != null) {
+                    if (rotateChcek(Node.r))                 // left side height long rotate Right
+                    {
+                        Node = rightRotate(Node.r);
+
+                        if (Node.l.height < Node.r.height) {
+                            Node = leftRotate(Node);
+                        }
+                    } else                                   // Right side height long rotate left
+                    {
+                        Node = leftRotate(Node);
+
+                    }
                 }else
                 {
-                    Node = leftRotate(Node.r);
+                    Node = leftRotate(Node);
                 }
             }
-            return Node;
+
         }
 
+        Node.height = nodeHeight(Node);
         return Node;
     }
 
@@ -120,7 +139,7 @@ public class AVL
         {
             if(rightChild.l != null)
             {
-                parent.height = Math.max(rightChild.l.height,parent.l.height);
+                parent.height = Math.max(rightChild.l.height,parent.l.height)+1;
                 parent.r = rightChild.l;
             }
             else
@@ -155,7 +174,7 @@ public class AVL
         {
             if(leftCHild.r != null)
             {
-                parent.height = Math.max(leftCHild.r.height,parent.r.height);
+                parent.height = Math.max(leftCHild.r.height,parent.r.height)+1;
                 parent.l = leftCHild.r;
             }
             else
