@@ -1,6 +1,4 @@
-import java.util.Arrays;
-
-public class Main {
+public class Main_test {
     public static void main(String[] args) {
         // int[] arr = {8,7,6,5,4,3,2,1};
         // int[] arr1 = {99,23,34,567,0,-1};
@@ -8,7 +6,7 @@ public class Main {
         // int[] arr3 = {-1,-1,-1,1,1,1,0};
         // int[] arr4 = {5,4,3,2,1,0};
         // int[] arr5 = {5,4,3,2,1};
-        // SortAlgorithms obj = new SortAlgorithms();
+        // SortAlgorithms_test obj = new SortAlgorithms_test();
         // obj.selectionSort(arr);
         // obj.selectionSort(arr1);
         // obj.selectionSort(arr2);

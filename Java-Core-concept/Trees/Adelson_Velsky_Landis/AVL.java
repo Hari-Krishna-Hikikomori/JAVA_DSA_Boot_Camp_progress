@@ -73,51 +73,114 @@ public class AVL
 
     private node isBalce(node Node)
     {
-        if(Node.r == null && Node.l == null)
+        if(Node.r == null || Node.l == null)
         {
             return Node;
         }
 
 
-        if(Math.abs(Node.l.height - Node.r.height) <= 1)
+        if(Math.abs(Node.l.height - Node.r.height) > 1)
         {
-            node tamp;
-            if(Node.l.height > Node.r.height)
+            if(rotateChcek(Node))
             {
-                tamp = rightRotate(Node);
+                if(rotateChcek(Node.l)) {
+                    Node = rightRotate(Node);
+                }else
+                {
+                    Node.l = leftRotate(Node.l);
+                }
             }
             else
             {
-                tamp = leftRotate(Node);
+                if(rotateChcek(Node.r)) {
+                    Node = rightRotate(Node);
+                }else
+                {
+                    Node = leftRotate(Node.r);
+                }
             }
-            return tamp;
+            return Node;
         }
 
         return Node;
     }
 
+    private boolean rotateChcek(node Nodee)
+    {
+        int r = Nodee.r == null ? 0 : Nodee.r.height;
+        int l = Nodee.l == null ? 0 : Nodee.l.height;
+
+        return l > r;
+    }
+
     private node leftRotate(node parent)
     {
-        node child = parent.r;
-        node GChild = child.l;
-        parent.height = Math.max(GChild.height,parent.height)+1;
-        child.height  = Math.max(child.r.height,parent.height)+1;
-        parent.r = GChild;
-        child.l = parent;
+        node rightChild = parent.r;
+        if(parent.l != null)
+        {
+            if(rightChild.l != null)
+            {
+                parent.height = Math.max(rightChild.l.height,parent.l.height);
+                parent.r = rightChild.l;
+            }
+            else
+            {
+                parent.height = parent.l.height + 1;
+                parent.r = null;
+            }
+            rightChild.l = parent;
+        }
+        else
+        {
+            if(rightChild.l != null)
+            {
+                parent.height = rightChild.l.height + 1;
+                parent.r = rightChild.l;
+            }
+            else
+            {
+                parent.height = 0;
+                parent.r = null;
+            }
+            rightChild.l = parent;
+        }
 
-        return child;
+        return  rightChild;
     }
 
     private node rightRotate(node parent)
     {
-        node child = parent.l;
-        node GChild = child.r;
-        parent.height = Math.max(GChild.height,parent.height)+1;
-        child.height  = Math.max(child.l.height,parent.height)+1;
-        parent.l = GChild;
-        child.r = parent;
+        node leftCHild = parent.l;
+        if(parent.r != null)
+        {
+            if(leftCHild.r != null)
+            {
+                parent.height = Math.max(leftCHild.r.height,parent.r.height);
+                parent.l = leftCHild.r;
+            }
+            else
+            {
+                parent.height = parent.r.height + 1;
+                parent.l = null;
+            }
+            leftCHild.r = parent;
+        }
+        else
+        {
+            if(leftCHild.r != null)
+            {
+                parent.height = leftCHild.r.height + 1;
+                parent.l = leftCHild.r;
+            }
+            else
+            {
+                parent.height = 0;
+                parent.l = null;
+            }
+            leftCHild.r = parent;
+        }
 
-        return child;
+        return  leftCHild;
     }
 
     private boolean isEmpty()

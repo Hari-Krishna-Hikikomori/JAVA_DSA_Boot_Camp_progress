@@ -20,8 +20,14 @@ public class test
         test.Display();
         System.out.println("=======");
         test.insertion(20);
+        test.Display();
+        System.out.println("=======");
         test.insertion(11);
+        test.Display();
+        System.out.println("=======");
         test.insertion(16);
+        test.Display();
+        System.out.println("=======");
         test.insertion(9);
         test.insertion(8);
         test.insertion(6);

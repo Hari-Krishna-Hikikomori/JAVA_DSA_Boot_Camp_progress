@@ -1,3 +1,5 @@
+package sortAlgorithms;
+
 import java.util.Arrays;
 
 public class test {

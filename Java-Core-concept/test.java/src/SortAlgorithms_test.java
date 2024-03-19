@@ -1,5 +1,5 @@
 
-public class SortAlgorithms
+public class SortAlgorithms_test
 {
     void cycleSort(int[] arr)
     {
