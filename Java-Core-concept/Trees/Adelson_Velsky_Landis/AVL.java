@@ -17,10 +17,10 @@ public class AVL
         }
 
     }
-    private node root = null;
+    private node root ;
     AVL()
     {
-
+        root = null;
     }
 
     AVL(int val)
@@ -55,15 +55,19 @@ public class AVL
             tamp.r = insertion(tamp.r,val);
         }
 
-        tamp = isBalce(tamp);
         tamp.height = nodeHeight(tamp);
-
+        tamp = isBalce(tamp);
         return tamp;
+    }
+
+    public int nodeHeight()
+    {
+        return this.root.height;
     }
 
     private int nodeHeight(node tamp)
     {
-        if(tamp.r == null && tamp.l == null) return 0;
+        if(tamp == null || tamp.r == null && tamp.l == null) return 0;
 
         int r = tamp.r == null ? 0 : tamp.r.height;
         int l = tamp.l == null ? 0 : tamp.l.height;
@@ -73,133 +77,58 @@ public class AVL
 
     private node isBalce(node Node)
     {
-        int r = Node.r == null ? 0 : Node.r.height;
-        int l = Node.l == null ? 0 : Node.l.height;
 
-        if(Math.abs(r - l) > 1)
-        {
-
-            if(rotateChcek(Node))  // left height is long
+            if(nodeHeight(Node.l) - nodeHeight(Node.r) > 1)         // left height is long then it will positive
             {
-                if(Node.l != null) {
-                    if (rotateChcek(Node.l))               // left side height long rotate Right
-                    {
-                        Node = rightRotate(Node);
-
-                    } else {                                      // Right side height long rotate left
-                        Node.l = leftRotate(Node.l);
-                        if (rotateChcek(Node)) {
-                            Node = rightRotate(Node);
-                        }
-                    }
-                }else
-                {
-                    Node = rightRotate(Node);
+                if(nodeHeight(Node.l.l) - nodeHeight(Node.l.r) > 0)
+                { // left left
+                    return rightRotate(Node);
                 }
-            }
-            else            // right side height is long
-            {
-                if(Node.r != null) {
-                    if (rotateChcek(Node.r))                 // left side height long rotate Right
-                    {
-                        Node = rightRotate(Node.r);
-
-                        if (Node.l.height < Node.r.height) {
-                            Node = leftRotate(Node);
-                        }
-                    } else                                   // Right side height long rotate left
-                    {
-                        Node = leftRotate(Node);
-
-                    }
-                }else
-                {
-                    Node = leftRotate(Node);
+                if(nodeHeight(Node.l.l) - nodeHeight(Node.l.r) < 0)
+                {// left right
+                    Node.l = leftRotate(Node.l);
+                    return rightRotate(Node);
                 }
             }
 
-        }
+            if(nodeHeight(Node.l) - nodeHeight(Node.r) < -1)         // right height is long then it will negative
+            {
+                if(nodeHeight(Node.r.l) - nodeHeight(Node.r.r) < 0)
+                { // rigth rigth
+                    return leftRotate(Node);
+                }if(nodeHeight(Node.r.l) - nodeHeight(Node.r.r) > 0)
+                { // right left
+                    Node.r = rightRotate(Node.r);
+                    return leftRotate(Node);
+                }
+            }
 
-        Node.height = nodeHeight(Node);
         return Node;
     }
 
-    private boolean rotateChcek(node Nodee)
-    {
-        int r = Nodee.r == null ? 0 : Nodee.r.height;
-        int l = Nodee.l == null ? 0 : Nodee.l.height;
-
-        return l > r;
-    }
 
     private node leftRotate(node parent)
     {
-        node rightChild = parent.r;
-        if(parent.l != null)
-        {
-            if(rightChild.l != null)
-            {
-                parent.height = Math.max(rightChild.l.height,parent.l.height)+1;
-                parent.r = rightChild.l;
-            }
-            else
-            {
-                parent.height = parent.l.height + 1;
-                parent.r = null;
-            }
-            rightChild.l = parent;
-        }
-        else
-        {
-            if(rightChild.l != null)
-            {
-                parent.height = rightChild.l.height + 1;
-                parent.r = rightChild.l;
-            }
-            else
-            {
-                parent.height = 0;
-                parent.r = null;
-            }
-            rightChild.l = parent;
-        }
+        node child = parent.r;
+        parent.r   = child.l;
 
-        return  rightChild;
+        child.l = parent;
+
+        parent.height = Math.max(nodeHeight(parent.l),nodeHeight(parent.r))+1;
+        child.height = Math.max(nodeHeight(child.l),nodeHeight(child.r))+1;
+        return child;
     }
 
     private node rightRotate(node parent)
     {
-        node leftCHild = parent.l;
-        if(parent.r != null)
-        {
-            if(leftCHild.r != null)
-            {
-                parent.height = Math.max(leftCHild.r.height,parent.r.height)+1;
-                parent.l = leftCHild.r;
-            }
-            else
-            {
-                parent.height = parent.r.height + 1;
-                parent.l = null;
-            }
-            leftCHild.r = parent;
-        }
-        else
-        {
-            if(leftCHild.r != null)
-            {
-                parent.height = leftCHild.r.height + 1;
-                parent.l = leftCHild.r;
-            }
-            else
-            {
-                parent.height = 0;
-                parent.l = null;
-            }
-            leftCHild.r = parent;
-        }
+        node child = parent.l;
+        parent.l   = child.r;
 
-        return  leftCHild;
+        child.r = parent;
+        parent.height = Math.max(nodeHeight(parent.l),nodeHeight(parent.r));
+        child.height = Math.max(nodeHeight(child.l),nodeHeight(child.r));
+
+        return child;
     }
 
     private boolean isEmpty()
