@@ -29,14 +29,7 @@ public class AVL
     }
     public void insertion(int val)
     {
-        if(isEmpty())
-        {
-            root = new node(val);
-            return;
-        }
-
         root = insertion(root,val);
-
     }
 
     private node insertion(node tamp, int val)
@@ -65,7 +58,7 @@ public class AVL
         return this.root.height;
     }
 
-    private int nodeHeight(node tamp)
+    private int nodeHeight(node tamp)                     // return the height of the Node by calculate Left and Right plus one
     {
         if(tamp == null || tamp.r == null && tamp.l == null) return 0;
 
@@ -111,7 +104,6 @@ public class AVL
     {
         node child = parent.r;
         parent.r   = child.l;
-
         child.l = parent;
 
         parent.height = Math.max(nodeHeight(parent.l),nodeHeight(parent.r))+1;
@@ -123,10 +115,10 @@ public class AVL
     {
         node child = parent.l;
         parent.l   = child.r;
-
         child.r = parent;
-        parent.height = Math.max(nodeHeight(parent.l),nodeHeight(parent.r));
-        child.height = Math.max(nodeHeight(child.l),nodeHeight(child.r));
+
+        parent.height = Math.max(nodeHeight(parent.l),nodeHeight(parent.r))+1;
+        child.height = Math.max(nodeHeight(child.l),nodeHeight(child.r))+1;
 
         return child;
     }
