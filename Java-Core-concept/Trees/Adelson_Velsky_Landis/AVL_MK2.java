@@ -37,7 +37,7 @@ public class AVL_MK2 {
             } else if (val > node.val) {
                 node.r = insert(node.r, val);
             }
-
+               // this line make the different
             node.height = Math.max(nodeHeight(node.l), nodeHeight(node.r)) + 1;
             return isBalanced(node);
         }
@@ -45,14 +45,14 @@ public class AVL_MK2 {
         private Node isBalanced(Node node) {
             int balance = nodeHeight(node.l) - nodeHeight(node.r);
 
-            if (balance > 1) { // left heavy
+            if (balance > 1) { // left heavy - positive
                 if (nodeHeight(node.l.l) >= nodeHeight(node.l.r)) { // left left
                     return rightRotate(node);
                 } else { // left right
                     node.l = leftRotate(node.l);
                     return rightRotate(node);
                 }
-            } else if (balance < -1) { // right heavy
+            } else if (balance < -1) { // right heavy - negative
                 if (nodeHeight(node.r.r) >= nodeHeight(node.r.l)) { // right right
                     return leftRotate(node);
                 } else { // right left
@@ -108,7 +108,7 @@ public class AVL_MK2 {
             prettyDisplay(node.l, level + 1);
         }
 
-        private int nodeHeight(Node node) {
+        private int nodeHeight(Node node) {      // this little change in code make code more efficient
             return node == null ? 0 : node.height;
         }
     public int nodeHeight() {
