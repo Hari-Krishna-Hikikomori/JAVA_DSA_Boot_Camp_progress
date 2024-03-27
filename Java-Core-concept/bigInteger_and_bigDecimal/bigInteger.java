@@ -22,5 +22,9 @@ public class bigInteger
             System.out.println(bi.compareTo(BI));
         }
         System.out.println(no);
+
+        BigInteger ans = new BigInteger("121233224");
+
+        System.out.println(factorial.factorial_print(ans));
     }
 }
