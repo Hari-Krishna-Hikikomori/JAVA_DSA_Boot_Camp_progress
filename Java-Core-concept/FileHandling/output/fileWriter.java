@@ -16,16 +16,13 @@ public class fileWriter
         {
             fw.write("now playing Akari");
             fw.write(10);    //new line
-
-            char[] in = "OWN PARADISE - ".toCharArray();
+            fw.write("Next Song \n");
+            char[] in = "OWN PARADISE - LXAES ".toCharArray();
             fw.write(in);
-
             fw.write( "😶");
 
             // without modifying original file or write fresh from start
 
-            fw.append('\n');
-            fw.append("Next song");
             fw.append('\n');
             fw.append("Where Is Our Blue - Tatsuya Kitani ☄\uFE0F");
 
