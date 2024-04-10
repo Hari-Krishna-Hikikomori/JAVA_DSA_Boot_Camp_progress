@@ -8,7 +8,7 @@ public class bufferReader_ByteToCharecter
     {
 
         // file text byte to char
-        try(BufferedReader br = new BufferedReader( new FileReader("D:\\GitHub\\JAVA_DSA_Boot_Camp_progress\\Java-Core-concept\\FileHandling\\testFiles\\test_01.txt")))
+        try(BufferedReader br = new BufferedReader( new FileReader("D:\\GitHub\\JAVA_DSA_Boot_Camp_progress\\Java-Core-concept\\FileHandling\\testFiles\\test_01_FileReader.txt")))
         {
 
             while(br.ready())
