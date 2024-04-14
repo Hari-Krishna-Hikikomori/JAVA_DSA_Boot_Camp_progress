@@ -19,7 +19,7 @@ public class BinaryTree
     }
     node root;
 
-    BinaryTree(int val)
+    public BinaryTree(int val)
     {
         root = new node(val);
     }

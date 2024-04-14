@@ -2,12 +2,12 @@ package Trees;
 
 public class node {
 
-        int val;
-        int height;
+        public int val;
+        public int height;
 
-        node l;
-        node r;
-        node(int val)
+        public node l;
+        public node r;
+        public node(int val)
         {
             this.val = val;
         }

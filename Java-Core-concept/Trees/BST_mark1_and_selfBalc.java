@@ -16,14 +16,17 @@ public class BST_mark1_and_selfBalc
     int balc;
     bNode root = null;
 
-    BST_mark1_and_selfBalc(int val)
+    public BST_mark1_and_selfBalc(int val)
     {
         root = new bNode();
         root.val = val;
         root.lefthieght = 0;
         root.rightheight= 0;
     }
-
+    public bNode head()
+    {
+        return root;
+    }
 
     public void inSert(int val)
     {

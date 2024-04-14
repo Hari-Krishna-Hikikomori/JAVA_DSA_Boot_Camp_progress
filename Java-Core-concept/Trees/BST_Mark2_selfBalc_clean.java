@@ -15,7 +15,7 @@ public class BST_Mark2_selfBalc_clean
 
     }
 
-    BST_Mark2_selfBalc_clean(int val)
+    public BST_Mark2_selfBalc_clean(int val)
     {
         root = new node(val);
     }
@@ -35,7 +35,10 @@ public class BST_Mark2_selfBalc_clean
         }
     }
 
-
+    public node head()
+    {
+        return root;
+    }
     private void selfBalc(node root)
     {
         ArrayList<Integer> list = inOrder(new ArrayList<Integer>(),root);
@@ -127,7 +130,7 @@ public class BST_Mark2_selfBalc_clean
         return root == null;
     }
 
-    void Display()
+    public void Display()
     {
         Display(root,0);
     }
