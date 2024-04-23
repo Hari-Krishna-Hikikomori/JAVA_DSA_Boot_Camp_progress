@@ -6,21 +6,20 @@ public class zigZag_Level_order_Traversal
 {
     class Solution_01 {
 
-        public List<List<Integer>> zigzagLevelOrder(zigZag_Level_order_Traversal.TreeNode root)
+        public List<List<Integer>> zigzagLevelOrder(TreeNode root)
         {
             if(root == null)
             {
                 return new ArrayList<>();
             }
 
-            Queue<zigZag_Level_order_Traversal.TreeNode> q =  new LinkedList<>();
+            Queue<TreeNode> q =  new LinkedList<>();
             List<List<Integer>> arr =  new ArrayList<>();
             q.add(root);
-
             return zigzagLevelOrder(q,arr,0);
         }
 
-        private List<List<Integer>> zigzagLevelOrder(Queue<zigZag_Level_order_Traversal.TreeNode> q, List<List<Integer>> arr, int level)
+        private List<List<Integer>> zigzagLevelOrder(Queue<TreeNode> q, List<List<Integer>> arr, int level)
         {
             if(q.isEmpty())
             {
@@ -34,12 +33,12 @@ public class zigZag_Level_order_Traversal
             return arr;
         }
 
-        private void Clock(Queue<zigZag_Level_order_Traversal.TreeNode> q, List<List<Integer>> arr, int level)
+        private void Clock(Queue<TreeNode> q, List<List<Integer>> arr, int level)
         {
             if(q.isEmpty())return;
 
             arr.add(new ArrayList<>());
-            Stack<zigZag_Level_order_Traversal.TreeNode> s = new Stack<>();
+            Stack<TreeNode> s = new Stack<>();
 
             while(!q.isEmpty())
             {
@@ -62,12 +61,12 @@ public class zigZag_Level_order_Traversal
             }
         }
 
-        private void antiClock(Queue<zigZag_Level_order_Traversal.TreeNode> q, List<List<Integer>> arr, int level) {
+        private void antiClock(Queue<TreeNode> q, List<List<Integer>> arr, int level) {
             if (q.isEmpty()) {
                 return;
             }
             arr.add(new ArrayList<>());
-            Stack<zigZag_Level_order_Traversal.TreeNode> s = new Stack<>();
+            Stack<TreeNode> s = new Stack<>();
 
             while (!q.isEmpty()) {
                 arr.get(level).add(q.peek().val);
@@ -162,19 +161,7 @@ public class zigZag_Level_order_Traversal
     }
 
 
-    public class TreeNode
-    {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode() {}
-        TreeNode(int val) { this.val = val; }
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
+
 }
 
 

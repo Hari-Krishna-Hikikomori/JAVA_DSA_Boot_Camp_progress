@@ -3,30 +3,60 @@ package Trees.BinaryTrees_Problem.BFS;
 import Trees.BST_Mark2_selfBalc_clean;
 import Trees.node;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class test
 {
     public static void main(String[] args)
     {
-        System.out.println(0 % 2);
-        BST_Mark2_selfBalc_clean bs = new BST_Mark2_selfBalc_clean(1);
+        BST_Mark2_selfBalc_clean bs = new BST_Mark2_selfBalc_clean(5);
 
-        for (int i = 2; i <=15; i++)
-        {
-           bs.insertion(i);
-        }
 
+        bs.insertion(6);
+        bs.insertion(4);
+        bs.insertion(3);
+
+        test t = new test();
+
+        List<Integer> arr = t.rightSideView(bs.head());
         bs.Display();
-        node head = bs.head();
 
-        System.out.println();
-        System.out.println(SuccessorOfnode_test(head,8));
+        System.out.println(arr);
 
     }
+
+        public List<Integer> rightSideView(node root) {
+            if (root == null) {
+                return new ArrayList<>();
+            }
+
+
+            List<Integer> arr = new ArrayList<>();
+            arr.add(root.val);
+
+            rightSideView(root, arr,0,0);
+            return arr;
+        }
+
+        private int rightSideView(node root, List<Integer> arr,int level,int right)
+        {
+            if(root == null)
+            {
+                return level;
+            }
+            if(right > level)
+            {
+                arr.add(root.val);
+                ++level;
+            }
+            if(root.r != null)
+            {
+                level = rightSideView(root.r,arr,level,right+1);
+            }
+
+            return rightSideView(root.l,arr,level,right+1);
+        }
+
 
     private static int SuccessorOfnode_test(node head,int find)
     {
