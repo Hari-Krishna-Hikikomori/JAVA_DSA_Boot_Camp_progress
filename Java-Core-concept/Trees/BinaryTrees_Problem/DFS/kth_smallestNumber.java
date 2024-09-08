@@ -51,4 +51,32 @@ public class kth_smallestNumber
             return !ans.isEmpty() ? ans.getFirst() : kthSmallest(root.right,k,ans);
         }
     }
+    static class Solution_02 {
+        public int kthSmallest(TreeNode root, int k)
+        {
+            if(root == null)
+            {
+                return 0;
+            }
+
+
+            return kthSmallest(root,k,0);
+        }
+
+        private int ans;
+        private int kthSmallest(TreeNode root, int k, int count)
+        {
+            if(root == null) return count;
+
+
+
+            count = kthSmallest(root.left,k,ans)+1;
+            if(k == count)
+            {
+                ans = root.val;
+            }
+
+            return ans != 0 ? ans : kthSmallest(root.right,k,ans);
+        }
+    }
 }
