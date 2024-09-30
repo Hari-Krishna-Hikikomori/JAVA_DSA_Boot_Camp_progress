@@ -23,7 +23,7 @@ public class kth_smallestNumber
 
 
     }
-    static class Solution {
+    static class Solution{
         public int kthSmallest(TreeNode root, int k)
         {
             if(root == null)
