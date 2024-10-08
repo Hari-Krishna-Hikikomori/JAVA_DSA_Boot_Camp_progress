@@ -12,6 +12,19 @@ public class constructBInary_treeFrome_preOrder_andInorder_traversal
 {
     public static void main(String[] args)
     {
+
+        String str = 123+"-";
+        System.out.println(str.length());
+        int index = 0;
+        int s = str.trim().charAt(index);
+        int ans = 0;
+        while(s!= '-' && s!= 'N')
+        {
+            ans = (ans*10)+(s-48);
+            s = str.trim().charAt(++index);
+        }
+
+        System.out.println(ans);
         int[] pre = {1, 2, 4, 5, 3, 2, 4, 5};
         int[] iro = {4, 2, 5, 1, 4, 2, 5, 3};
 
